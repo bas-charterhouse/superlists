@@ -27,7 +27,7 @@ SECRET_KEY = '^+=#t7lbi8whfn&rotehp&xm-@aa*bb8#tu$r9j-&t-c$!v-lz'
 if 'DJANGO_DEBUG_FALSE' in os.environ:  
     DEBUG = False
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']  
-    ALLOWED_HOSTS = ['superlists-staging.foresthappypeople.tk']  
+    ALLOWED_HOSTS = [os.environ['SITENAME']]  
 else:
     DEBUG = True  
     SECRET_KEY = 'insecure-key-for-dev'
