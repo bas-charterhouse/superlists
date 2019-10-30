@@ -19,7 +19,7 @@ class NewVisitorTest(FunctionalTest):
         inputbox = self.get_item_input_box() 
  
         self.assertEqual(
-            inputbox.get_attribute('placeholder'), 'Enter to-do item', "The placeholder is actlly" + inputbox.get_attribute("placeholder")
+            inputbox.get_attribute('placeholder'), 'Enter a to-do item', "The placeholder is actlly" + inputbox.get_attribute("placeholder")
         )
         
 
