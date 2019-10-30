@@ -37,3 +37,5 @@ class ListandItemModelTest(TestCase):
         with self.assertRaises(ValidationError):
             item.save()
             item.full_clean()
+    
+    
