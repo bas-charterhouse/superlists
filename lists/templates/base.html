@@ -16,10 +16,14 @@
   <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Superlists</a>
+    
       <ul class="nav navbar-nav navbar-right">
-        <li class="navbar-text">Logged in as {{ user.email }}</li>
-        <li><a href="#">Log out</a></li>
+     <li class="navbar-text">Logged in as {{ user.email }}</li>
+      {% if user.email %}
+         <li><a href="{% url 'logout' %}">Log out</a></li>
+     {% else %}
       </ul>
+    
       <form class="navbar-form navbar-right"
             method="POST"
             action="{% url 'send_login_email' %}">
@@ -27,7 +31,8 @@
         <input class="form-control" name="email" type="text" />
         {% csrf_token %}
       </form>
-    </div>
+    {% endif %}
+  </div>
 </nav>
 
 ​{% if messages %}
