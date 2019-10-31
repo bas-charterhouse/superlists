@@ -77,6 +77,7 @@ class LoginTest(FunctionalTest):
         # she clicks it
         self.browser.get(url)
 
+        
         # she is logged in!
         self.wait_to_be_logged_in(email=test_email)
 
