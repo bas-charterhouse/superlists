@@ -23,7 +23,7 @@
          <li><a href="{% url 'logout' %}">Log out</a></li>
      {% else %}
       </ul>
-    {
+    
       <form class="navbar-form navbar-right"
             method="POST"
             action="{% url 'send_login_email' %}">
