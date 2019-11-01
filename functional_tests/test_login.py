@@ -19,6 +19,7 @@ class LoginTest(FunctionalTest):
             self.assertEqual(email.subject, subject)
             return email.body
 
+        time.sleep(10)
         email_id = None
         start = time.time()
         inbox = poplib.POP3_SSL('pop.mail.yahoo.com')
@@ -63,9 +64,12 @@ class LoginTest(FunctionalTest):
             self.browser.find_element_by_tag_name('body').text
         ))
 
+        
+
         # She checks her email and finds a message
         body = self.wait_for_email(test_email, SUBJECT)
 
+        
         # It has a url link in it
         self.assertIn('Use this link to log in', body)
         url_search = re.search(r'http://.+/.+$', body)
@@ -74,10 +78,13 @@ class LoginTest(FunctionalTest):
         url = url_search.group(0)
         self.assertIn(self.live_server_url, url)
 
+        print(url)
         # she clicks it
         self.browser.get(url)
 
-        # she is logged in!
+## she is logged in!
+        time.sleep(5)
+        
         self.wait_to_be_logged_in(email=test_email)
 
 

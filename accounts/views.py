@@ -8,7 +8,16 @@ from accounts.models import Token
 from django.core.urlresolvers import reverse
 from django.contrib import auth, messages
 
+import logging
+
+logger = logging.getLogger(__name__)
+logger.disabled = False
+
 def send_login_email(request):
+
+    logger.info("send email view")
+    print("send email view")
+      
     email = request.POST['email']
     token = Token.objects.create(email=email)
     url = request.build_absolute_uri(  
@@ -28,6 +37,9 @@ def send_login_email(request):
     return redirect('/')
 
 def login(request):
+    logger.debug("logger login view")
+    print("login view")
+    
     user = auth.authenticate(uid=request.GET.get('token'))
     if user:
         auth.login(request, user)

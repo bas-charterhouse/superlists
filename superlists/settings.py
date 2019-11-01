@@ -25,7 +25,7 @@ SECRET_KEY = '^+=#t7lbi8whfn&rotehp&xm-@aa*bb8#tu$r9j-&t-c$!v-lz'
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if 'DJANGO_DEBUG_FALSE' in os.environ:  
-    DEBUG = False
+    DEBUG = True
     SECRET_KEY = os.environ['DJANGO_SECRET_KEY']  
     ALLOWED_HOSTS = [os.environ['SITENAME']]  
 else:
@@ -133,22 +133,24 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+DJANGO_LOG_LEVEL=DEBUG
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'handlers': {
         'console': {
-            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
         },
     },
     'loggers': {
         'django': {
             'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
         },
     },
-    'root': {'level': 'INFO'},
 }
+
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'foresthappypeople@gmail.com'
